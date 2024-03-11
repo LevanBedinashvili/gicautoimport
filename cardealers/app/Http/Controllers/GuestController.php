@@ -14,18 +14,12 @@ class GuestController extends Controller
     public function index()
     {
         $auction = Auction::get();
-        $state = State::get();
-        $port = Port::get();
-        $vehicle = Vehicle::get();
-        return view('guest.index', compact('auction','state','port','vehicle'));
+        return view('guest.index', compact('auction'));
     }
 
     public function home()
     {
         $auction = Auction::get();
-        $state = State::get();
-        $port = Port::get();
-        $vehicle = Vehicle::get();
-        return view('guest.index', compact('auction','state','port','vehicle'));
+        return view('guest.index', compact('auction'));
     }
 }

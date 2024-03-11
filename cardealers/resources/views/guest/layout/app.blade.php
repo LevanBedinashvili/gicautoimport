@@ -10,7 +10,7 @@
 
     <title>GIC AUTOIMPORT</title>
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('guest/carlogo.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('guest/carlogo.png') }}">
 
     <link rel="stylesheet" href="{{ asset('guest/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('guest/css/all-fontawesome.min.css') }}">
@@ -53,6 +53,16 @@
             overflow-y: scroll !important;
             -webkit-overflow-scrolling: touch;
         }
+        .fa-bars:before, .fa-navicon:before {
+            color: #12487f !important;
+        }
+        .navbar {
+            background: transparent;
+            padding-top: 0;
+            padding-bottom: 0;
+            box-shadow: var(--box-shadow);
+            z-index: 999;
+        }
     </style>
     <header class="header">
 {{--
@@ -94,12 +104,9 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container position-relative">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="{{ asset('guest/carlogo.jpg') }}" alt="logo" style="width: 100px; height: 100px;">
+                        <img src="{{ asset('guest/carlogo.png') }}" alt="logo" style="width: 240px; height: 70px; bacjk">
                     </a>
                     <div class="mobile-menu-right">
-                        <div class="search-btn">
-                            <button type="button" class="nav-right-link"><i class="far fa-search"></i></button>
-                        </div>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>

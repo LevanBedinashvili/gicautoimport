@@ -68,7 +68,7 @@
             <div class="find-car-form">
                 <h4 class="find-car-title">Let's Find Your Perfect Car</h4>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Auctions</label>
                                 <select class="select" id="auctionSelect">
@@ -79,32 +79,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label>States</label> <br>
                                 <select class="newselect" id="stateSelect" name="state" style="display: none;">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Ports</label>
-                                <select class="select" >
-                                    <option value="#">All Ports</option>
-                                    @foreach($port as $item_ports)
-                                    <option value="#">{{ $item_ports->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Vehicle Types</label>
-                                <select class="select">
-                                    <option value="#">All Vehicle Types</option>
-                                    @foreach($vehicle as $item_vehicle)
-                                    <option value="#">{{ $item_vehicle->name }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                         </div>

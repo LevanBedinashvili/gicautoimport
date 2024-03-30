@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{ asset('guest/css/jquery-ui.min.css') }}">
     <link rel="stylesheet" href="{{ asset('guest/css/nice-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('guest/css/style.css') }}">
+    <link rel="stylesheet" href="//cdn.web-fonts.ge/fonts/bpg-arial-caps/css/bpg-arial-caps.min.css">
+
 </head>
 
 <body>
@@ -62,6 +64,13 @@
             padding-bottom: 0;
             box-shadow: var(--box-shadow);
             z-index: 999;
+        }
+        .hero-single .hero-content .hero-title {
+            color: var(--color-white);
+            font-size: 30px;
+            font-weight: 800;
+            margin: 20px 0;
+            text-transform: capitalize;
         }
     </style>
     <header class="header">
@@ -114,11 +123,9 @@
                     </div>
                     <div class="collapse navbar-collapse" id="main_nav">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="#">Calculator</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Car Body Types</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Why Us</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Brands</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Authorization</a></li>
+                            <li class="nav-item"><a class="nav-link" style="font-family: 'BPG Arial Caps', sans-serif;"  href="{{ route('home') }}">მთავარი</a></li>
+                            <li class="nav-item"><a class="nav-link" style="font-family: 'BPG Arial Caps', sans-serif;" href="{{ route('about') }}">ჩვენს შესახებ</a></li>
+                            <li class="nav-item"><a class="nav-link" style="font-family: 'BPG Arial Caps', sans-serif;"  href="{{ route('login') }}">ავტორიზაცია</a></li>
                         </ul>
                         <div class="nav-right">
                             {{-- <div class="search-btn">

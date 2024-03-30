@@ -13,12 +13,12 @@
                             <div class="hero-content">
                                 <h6 class="hero-sub-title" data-animation="fadeInUp" data-delay=".25s">Welcome To
                                     General Index Corp!</h6>
-                                <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
-                                    Best Way To Find Your <span>Dream</span> Car
-                                </h1>
-                                <p data-animation="fadeInLeft" data-delay=".75s">
-                                    Drive into a world of possibilities with us. Your journey begins here – where quality meets affordability, and personalized service makes every mile memorable. Find your dream ride today.
-                                </p>
+                                <a href="{{ route('info_one') }}" class="hero-title" data-animation="fadeInRight" data-delay=".50s" style="font-family: 'BPG Arial Caps', sans-serif;">
+                                    არ გაუშვა შესაძლებლობა, შექმნა ავტონომიური ბიზნესი.
+                                </a>
+                                <a href="{{ route('info_one') }}"  data-animation="fadeInLeft" data-delay=".75s" style="color: white;">
+                                    Do not miss the opportunity to create an autonomous business
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -31,12 +31,12 @@
                             <div class="hero-content">
                                 <h6 class="hero-sub-title" data-animation="fadeInUp" data-delay=".25s">Welcome To
                                     General Index Corp!</h6>
-                                <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
-                                    Best Way To Find Your <span>Dream</span> Car
-                                </h1>
-                                <p data-animation="fadeInLeft" data-delay=".75s">
-                                    Drive into a world of possibilities with us. Your journey begins here – where quality meets affordability, and personalized service makes every mile memorable. Find your dream ride today.
-                                </p>
+                                <a href="{{ route('info_two') }}" class="hero-title" data-animation="fadeInRight" data-delay=".50s" style="font-family: 'BPG Arial Caps', sans-serif;">
+                                    ოპტიმალური გადაწყვეტილება დილერებისთვის, ჩვენთან თანამშრომლობა კომფირტულია.
+                                </a>
+                                <a href="{{ route('info_two') }}"  data-animation="fadeInLeft" data-delay=".75s" style="color: white;">
+                                    Optimal solution for dealers, cooperation with us is comfortable.
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -49,12 +49,12 @@
                             <div class="hero-content">
                                 <h6 class="hero-sub-title" data-animation="fadeInUp" data-delay=".25s">Welcome To
                                     General Index Corp!</h6>
-                                <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
-                                    Best Way To Find Your <span>Dream</span> Car
-                                </h1>
-                                <p data-animation="fadeInLeft" data-delay=".75s">
-                                    Drive into a world of possibilities with us. Your journey begins here – where quality meets affordability, and personalized service makes every mile memorable. Find your dream ride today.
-                                </p>
+                                <a href="{{ route('info_three') }}"  class="hero-title" data-animation="fadeInRight" data-delay=".50s" style="font-family: 'BPG Arial Caps', sans-serif;">
+                                    ავტომობილის შეკვეთა გსურს? ის, რაც შენთვის მნიშვნელოვანია, აქ აღმოაჩენ.
+                                </a>
+                                <a href="{{ route('info_three') }}"  data-animation="fadeInLeft" data-delay=".75s" style="color: white;">
+                                    Do you want to order a car? You will find what is important to you here.
+                                </a>
                             </div>
                         </div>
                     </div>

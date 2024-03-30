@@ -19,6 +19,13 @@ Route::get('/home', [GuestController::class, 'home'])->name('home');
 
 Route::get('/get-states/{auctionId}', [AuctionController::class, 'getStates'])->name('get-states');
 
+Route::get('/info_one', [GuestController::class, 'info_one'])->name('info_one');
+Route::get('/info_two', [GuestController::class, 'info_two'])->name('info_two');
+Route::get('/info_three', [GuestController::class, 'info_three'])->name('info_three');
+Route::get('/about', [GuestController::class, 'about'])->name('about');
+
+
+
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {

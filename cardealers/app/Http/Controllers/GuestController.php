@@ -22,4 +22,29 @@ class GuestController extends Controller
         $auction = Auction::get();
         return view('guest.index', compact('auction'));
     }
+
+    public function info_one()
+    {
+        return view('guest.info_one');
+    }
+
+
+    public function info_two()
+    {
+        $auction = Auction::get();
+        return view('guest.info_two');
+    }
+
+
+    public function info_three()
+    {
+        $auction = Auction::get();
+        return view('guest.info_three');
+    }
+
+    public function about()
+    {
+        return view('guest.about');
+    }
+
 }

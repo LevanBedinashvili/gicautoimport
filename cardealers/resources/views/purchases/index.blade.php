@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
-@if(Auth::user()->role_id == 1)
 <div class="page-content">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -36,24 +34,21 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>ავტორი</th>
-                                        <th>მანქანის დასახელება</th>
+                                        <th>დასახელება</th>
                                         <th>VIN#</th>
                                         <th>სტოკის ნომერი</th>
                                         <th>სახელი,გვარი</th>
                                         <th>მდგომარეობა</th>
                                         <th>რედაქტირება</th>
-                                        <th>დადასტურება</th>
-                                        <th>ინვოისის ფაილი</th>
                                         <th>ფოტოები</th>
-{{--                                    <th>წაშლა</th>--}}
+                                        <th>ინვოისის ფაილი</th>
+{{--                                        <th>წაშლა</th>--}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @forelse ($get_all_purchases as $purchase)
+                                @forelse ($get_my_purchases as $purchase)
                                     <tr>
                                         <td>{{ $purchase->id }}</td>
-                                        <td>{{ $purchase->user->name }}</td>
                                         <td>{{ $purchase->vehicle_title }}</td>
                                         <td>{{ $purchase->vin_code }}</td>
                                         <td>{{ $purchase->stock_number }}</td>
@@ -66,25 +61,19 @@
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{ route('purchase.edit', $purchase->id) }}"
-                                                   class="btn btn-primary shadow btn-xs sharp me-1"></i>რედაქტირება</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="{{ route('purchase.approve', $purchase->id) }}"
-                                                   class="btn btn-success shadow btn-xs sharp me-1">დადასტურება</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="{{ route('adminka.showUploadForm', $purchase->id) }}"
-                                                   class="btn btn-warning shadow btn-xs sharp me-1">ფაილი</a>
+                                                   class="btn btn-primary shadow btn-xs sharp me-1">რედაქტირება</a>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{ route('adminka.showPhotoUploadForm', $purchase->id) }}"
-                                                   class="btn btn-danger shadow btn-xs sharp me-1">ფოტოები</a>
+                                                   class="btn btn-warning shadow btn-xs sharp me-1">ფოტოები</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <a href="{{ route('adminka.showUploadForm', $purchase->id) }}"
+                                                   class="btn btn-success shadow btn-xs sharp me-1">ფაილი</a>
                                             </div>
                                         </td>
 {{--                                        <td>--}}
@@ -100,7 +89,7 @@
                                     </tr>
                                 @empty
                                     <div class="alert alert-danger">
-                                        ადმინისტრატორები არ მოიძებნა
+                                        მანქანები არ მოიძებნა
                                     </div>
                                 @endforelse
                                 </tbody>
@@ -109,13 +98,11 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    {{ $get_all_purchases->links() }}
+                    {{ $get_my_purchases->links() }}
                 </div>
             </div>
         </div>
     </div>
+    <!-- container-fluid -->
 </div>
-@else
-
-@endif
 @endsection

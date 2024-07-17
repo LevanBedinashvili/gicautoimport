@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $get_all_users_from_database = User::orderBy('id', 'asc')->get();
+        $get_all_users_from_database = User::with(['role'])->orderBy('id', 'asc')->get();
         return view('users.index', compact('get_all_users_from_database'));
     }
 
@@ -48,7 +48,7 @@ class UserController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(CreateAdminRequest $request)
+    public function store(Request $request)
     {
         $requestData = $request->all();
 
@@ -92,7 +92,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(UpdateAdminRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $requestData = $request->except('_method', '_token');

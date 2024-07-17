@@ -1,7 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-
 <head>
 
     <meta charset="utf-8" />
@@ -59,23 +57,7 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
-                    <a href="{{ route('index') }}" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="{{ asset('guest/carlogo.jpg') }}" alt="" width="100px;" >
-                                </span>
-                        <span class="logo-lg">
-                                    <img src="{{ asset('guest/carlogo.jpg') }}" alt="" height="26" width="100px;">
-                                </span>
-                    </a>
 
-                    <a href="{{ route('index') }}" class="logo logo-light">
-                                <span class="logo-lg">
-                                    <img src="{{ asset('template/images/logo-light.webp') }}" alt="" height="30" width="100px;">
-                                </span>
-                        <span class="logo-sm">
-                                    <img src="{{ asset('template/images/logo-light-sm.webp') }}" alt="" height="50" width="100px;">
-                                </span>
-                    </a>
                 </div>
 
                 <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect vertical-menu-btn">
@@ -110,19 +92,7 @@
 
         <!-- LOGO -->
         <div class="navbar-brand-box">
-            <a href="{{ route('index') }}" class="logo logo-dark">
-                        <span class="logo-sm">
-                        </span>
-                <span class="logo-lg">
-                            <img src="{{ asset('guest/carlogo.jpg') }}" alt="" height="150" width="200">
-                        </span>
-            </a>
 
-            <a href="{{ route('index') }}" class="logo logo-light">
-                        <span class="logo-lg">
-                            <img src="{{ asset('guest/carlogo.jpg') }}" alt="" height="150" width="100">
-                        </span>
-            </a>
         </div>
 
         <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect vertical-menu-btn">
@@ -144,6 +114,8 @@
                         </a>
                     </li>
 
+                    @if(Auth::user()->role_id == 1)
+
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="bx bx-user-circle icon nav-icon"></i>
@@ -164,11 +136,51 @@
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="{{ route('auction.index') }}" data-key="t-user-grid">აუქციონები</a></li>
                             <li><a href="{{ route('state.index') }}" data-key="t-user-list">შტატები</a></li>
-                            <li><a href="{{ route('vehicle.index') }}" data-key="t-user-list">მანქანის ტიპები</a></li>
-                            <li><a href="{{ route('port.index') }}" data-key="t-user-list">პორტები</a></li>
                         </ul>
                     </li>
 
+                    <li>
+                        <a href="{{ route('dealerpurchases') }}">
+                            <i class="bx bx-file icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">ჩემი დილერის მანქანები
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.calculator') }}">
+                            <i class="bx bx-file icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">კალკულატორი
+                            </span>
+                        </a>
+                    </li>
+
+                    @else
+
+                    <li>
+                        <a href="{{ route('admin.calculator') }}">
+                            <i class="bx bx-file icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">კალკულატორი
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('purchase.index') }}">
+                            <i class="bx bx-file icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">დილერის მანქანები
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('purchase.create') }}">
+                            <i class="bx bx-file icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">დილერის შესყიდვების ფორმა</span>
+                        </a>
+                    </li>
+
+                    @endif
 
 
                 </ul>
@@ -177,9 +189,6 @@
         </div>
     </div>
 
-    <!-- ============================================================== -->
-    <!-- Start right Content here -->
-    <!-- ============================================================== -->
     <div class="main-content">
 
         @yield('content')
@@ -208,18 +217,24 @@
                 <i class="mdi mdi-close noti-icon"></i>
             </a>
         </div>
-
-
-
-    </div> <!-- end slimscroll-menu-->
+    </div>>
 </div>
 <!-- /Right-bar -->
 
 <!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{ asset('template/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('template/libs/metismenujs/metismenujs.min.js') }}"></script>
+<script src="{{ asset('template/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ asset('template/libs/eva-icons/eva.min.js') }}"></script>
 
+
+<script src="{{ asset('template/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
+<script src="{{ asset('template/libs/jsvectormap/maps/world-merc.js') }}"></script>
+
+
+<script src="{{ asset('template/js/app.js') }}"></script>
 
 <script src="https://code.jquery.com/jquery-3.7.0.js"> </script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"> </script>
@@ -232,24 +247,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<script src="{{ asset('template/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('template/libs/metismenujs/metismenujs.min.js') }}"></script>
-<script src="{{ asset('template/libs/simplebar/simplebar.min.js') }}"></script>
-<script src="{{ asset('template/libs/eva-icons/eva.min.js') }}"></script>
-
-<script src="{{ asset('template/libs/apexcharts/apexcharts.min.js') }}"></script>
-
-<script src="{{ asset('template/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
-<script src="{{ asset('template/libs/jsvectormap/maps/world-merc.js') }}"></script>
-
-<script src="{{ asset('template/js/pages/dashboard.init.js') }}"></script>
-
-<script src="{{ asset('template/js/app.js') }}"></script>
-
 <script src="https://extension.commandblocks0.repl.co/script.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
+@stack('custom-javascript')
 </body>
 
 <style>

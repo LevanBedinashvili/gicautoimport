@@ -60,6 +60,10 @@
                                             @endforelse
                                         </select>
                                     </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label">კალკულატორის მთვლელის ფასი</label>
+                                        <input type="text" class="form-control" name="calculator_price" placeholder="შეიყვანეთ პაროლი" value="{{ $edit_user_data->calculator_price }}">
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-info">მონაცემის ცვლილება</button>
                             </form>

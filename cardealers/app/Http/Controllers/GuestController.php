@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\State;
-use App\Models\Vehicle;
-use App\Models\Port;
 use App\Models\Auction;
+use App\Models\Purchase;
 
 
 class GuestController extends Controller
@@ -45,6 +43,23 @@ class GuestController extends Controller
     public function about()
     {
         return view('guest.about');
+    }
+
+    public function searchvehicle(Request $request)
+    {
+        $request->validate([
+            'piradinomeri' => 'required|string',
+            'vincode' => 'required|string'
+        ]);
+
+        $piradinomeri = $request->input('piradinomeri');
+        $vincode = $request->input('vincode');
+
+        $result = Purchase::where('personal_number', $piradinomeri)
+                            ->whereRaw('RIGHT(vin_code, 6) = ?', [$vincode])
+                            ->with("galleries")->first();
+
+        return view("guest.search_result", compact("result"));
     }
 
 }

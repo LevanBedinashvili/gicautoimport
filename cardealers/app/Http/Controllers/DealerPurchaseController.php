@@ -17,7 +17,7 @@ class DealerPurchaseController extends Controller
      */
     public function index()
     {
-        $get_my_purchases = Purchase::where("user_id", Auth::user()->id)->orderBy('id', 'desc')->paginate(10);
+        $get_my_purchases = Purchase::where("user_id", Auth::user()->id)->orderBy('buy_date', 'desc')->paginate(30);
         return view('purchases.index', compact('get_my_purchases'));
     }
 
@@ -46,7 +46,7 @@ class DealerPurchaseController extends Controller
             'buy_date' => 'required|date',
             'buy_price' => 'required|numeric',
             'transport_price' => 'required|numeric',
-            'full_price' => 'required|numeric',
+            'pirveladi_shenatani' => 'sometimes',
             'client_name' => 'required|string|max:255',
             'personal_number' => 'required|string|max:255',
             'address' => 'required|string|max:255',
@@ -64,7 +64,8 @@ class DealerPurchaseController extends Controller
         $purchase->buy_date = $request->buy_date;
         $purchase->buy_price = $request->buy_price;
         $purchase->transport_price = $request->transport_price;
-        $purchase->full_price = $request->full_price;
+        $purchase->full_price = (float)$request->buy_price + (float)$request->transport_price;
+        $purchase->pirveladi_shenatani = $request->pirveladi_shenatani;
         $purchase->client_name = $request->client_name;
         $purchase->personal_number = $request->personal_number;
         $purchase->address = $request->address;
@@ -75,7 +76,7 @@ class DealerPurchaseController extends Controller
 
         $purchase->save();
 
-        return redirect()->back()->with('Success', 'Purchase saved successfully!');
+        return redirect()->back()->with('Success', 'წარმატებით დაემატა');
     }
 
     /**
@@ -116,8 +117,8 @@ class DealerPurchaseController extends Controller
             'auction_name' => 'required|string|max:255',
             'buy_date' => 'required|date',
             'buy_price' => 'required|numeric',
+            'pirveladi_shenatani' => 'sometimes',
             'transport_price' => 'required|numeric',
-            'full_price' => 'required|numeric',
             'client_name' => 'required|string|max:255',
             'personal_number' => 'required|string|max:255',
             'address' => 'required|string|max:255',
@@ -127,6 +128,11 @@ class DealerPurchaseController extends Controller
         ]);
 
         $purchase = Purchase::findOrFail($id);
+
+        if(Auth::user()->role_id == 2 && $purchase->is_accepted == 1){
+            return back()->with("Error", "თქვენ არ გაქვთ რედაქტირების უფლება, რადგან უკვე დადასტურებულია.");
+        }
+
         $purchase->vehicle_title = $request->vehicle_title;
         $purchase->vin_code = $request->vin_code;
         $purchase->auction_name = $request->auction_name;
@@ -134,7 +140,8 @@ class DealerPurchaseController extends Controller
         $purchase->buy_date = $request->buy_date;
         $purchase->buy_price = $request->buy_price;
         $purchase->transport_price = $request->transport_price;
-        $purchase->full_price = $request->full_price;
+        $purchase->full_price = (float)$request->buy_price + (float)$request->transport_price;
+        $purchase->pirveladi_shenatani = $request->pirveladi_shenatani;
         $purchase->client_name = $request->client_name;
         $purchase->personal_number = $request->personal_number;
         $purchase->address = $request->address;
@@ -144,7 +151,7 @@ class DealerPurchaseController extends Controller
 
         $purchase->save();
 
-        return redirect()->back()->with('Success', 'Purchase updated successfully!');
+        return redirect()->back()->with('Success', 'რედაქტირება წარმატებით დასრულდა');
     }
 
     /**
@@ -163,7 +170,36 @@ class DealerPurchaseController extends Controller
         $purchase = Purchase::findOrFail($id);
         $purchase->is_accepted = 1;
         $purchase->save();
-        return redirect()->back()->with('Success', 'Purchase has accepted successfully!');
+        return redirect()->back()->with('Success', 'წარმატებით დადასტურდა');
 
+    }
+
+    public function updateAdmin(Request $request, $id)
+    {
+        $request->validate([
+            'buy_price' => 'sometimes|string|max:255',
+            'transport_price' => 'sometimes|string|max:255',
+            'container' => 'sometimes',
+            'container_link' => 'sometimes',
+            'paid_price' => 'sometimes',
+        ]);
+
+        $purchase = Purchase::findOrFail($id);
+
+        if(Auth::user()->role_id == 2){
+            return back()->with("Error", "თქვენ არ გაქვთ რედაქტირების უფლება");
+        }
+
+        $purchase->buy_price = $request->buy_price;
+        $purchase->transport_price = $request->transport_price;
+        $purchase->full_price = (float)$request->buy_price + (float)$request->transport_price;
+        $purchase->paid_price = $request->paid_price;
+        $purchase->davalianeba = ((float)$request->buy_price + (float)$request->transport_price) - $request->paid_price;
+        $purchase->container = $request->container;
+        $purchase->container_link = $request->container_link;
+
+        $purchase->save();
+
+        return redirect()->back()->with('Success', 'რედაქტირება წარმატებით დასრულდა');
     }
 }

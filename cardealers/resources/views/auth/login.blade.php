@@ -6,7 +6,7 @@
     <title>GIC AUTOIMPORT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/unnamed.jpg') }}">
     <link rel="stylesheet" href="//cdn.web-fonts.ge/fonts/bpg-square-mtavruli/css/bpg-square-mtavruli.min.css">
     <link href="{{ asset('template/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <link href="{{ asset('template/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -70,11 +70,7 @@
                                                    name="password">
                                         </div>
                                     </div>
-                                    <div class="form-check py-1">
-                                        <input type="checkbox" class="form-check-input" id="remember"
-                                               name="remember">
-                                        <label class="form-check-label" for="remember">დამახსოვრება</label>
-                                    </div>
+
                                     <div class="mt-3">
                                         <button class="btn btn-primary w-100 waves-effect waves-light"
                                                 type="submit">შესვლა</button>

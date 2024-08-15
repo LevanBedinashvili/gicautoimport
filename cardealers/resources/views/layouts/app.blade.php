@@ -10,12 +10,11 @@
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-
-    <link rel="shortcut icon" href="{{ asset('template/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('template/unnamed.jpg') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
     <!-- plugin css -->
-    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
 
 
     <link href="{{ asset('template/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -42,18 +41,33 @@
             margin: 0;
             margin-top: 70px;
         }
+        .cke_notification {
+            display: none;
+        }
+        .header-profile-user {
+            height: 60px;
+            width: 60px;
+            border: 1px solid #e9ebed;
+            padding: 3px;
+        }
+        .card {
+            margin-bottom: 24px;
+            margin-top: 40px;
+            -webkit-box-shadow: 0 0 6px #ebeef4;
+            box-shadow: 0 0 6px #ebeef4;
+        }
+        .page-content .container-fluid{
+            max-width: 100% !important;
+        }
+
     </style>
 
-
 </head>
-
-
-
 <body>
 <div id="layout-wrapper">
 
     <header id="page-topbar" class="isvertical-topbar">
-        <div class="navbar-header">
+        <div class="navbar-header" id="navbarheader">
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
@@ -68,12 +82,15 @@
 
             <div class="d-flex">
 
-                <div class="dropdown d-inline-block">
+                <div class="dropdown d-inline-block" style="margin-top: 1vh;">
                     <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown-v"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="{{ asset('template/guest.png') }}"
+                        <img class="rounded-circle header-profile-user" src="{{ asset('template/newphoto.png') }}"
                              alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ms-2 fw-medium font-size-15">{{ Auth::user()->name }}</span>
+                             <div class="row" style="margin-top: 3vh;">
+                                <span class="d-none d-xl-inline-block ms-2 fw-medium font-size-15">{{ Auth::user()->name }}</span>
+                                <p class="d-none d-xl-inline-block ms-2 fw-medium font-size-15">{{ Auth::user()->role->role_name }}</p>
+                             </div>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end pt-0">
                         <div class="p-3 border-bottom">
@@ -88,11 +105,22 @@
         </div>
     </header>
     <!-- ========== Left Sidebar Start ========== -->
-    <div class="vertical-menu">
+    <div class="vertical-menu" id="vertical">
 
-        <!-- LOGO -->
         <div class="navbar-brand-box">
+            <a href="{{ route('index') }}" class="logo logo-dark">
+                        <span class="logo-sm">
+                        </span>
+                <span class="logo-lg">
+                            <img src="{{ asset('guest/carlogo.png') }}" alt="" height="70" width="200">
+                        </span>
+            </a>
 
+            <a href="{{ route('index') }}" class="logo logo-light">
+                        <span class="logo-lg">
+                            <img src="{{ asset('guest/carlogo.png') }}" alt="" height="50" width="200">
+                        </span>
+            </a>
         </div>
 
         <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect vertical-menu-btn">
@@ -130,7 +158,7 @@
 
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
-                            <i class="bx bx-file icon nav-icon"></i>
+                            <i class="bx bx-calculator icon nav-icon"></i>
                             <span class="menu-item" data-key="t-contacts">კალკულატორი</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
@@ -140,16 +168,48 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('dealerpurchases') }}">
+                        <a href="javascript: void(0);" class="has-arrow">
+                            <i class="bx bx-book icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-contacts">სიახლეები</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{ route('news.index') }}" data-key="t-user-grid">სიახლეები</a></li>
+                            <li><a href="{{ route('news.create') }}" data-key="t-user-list">დამატება</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('discount.edit') }}">
                             <i class="bx bx-file icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">აქციები</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('dealerpurchases') }}">
+                            <i class="bx bx-world icon nav-icon"></i>
                             <span class="menu-item" data-key="t-horizontal">ჩემი დილერის მანქანები
                             </span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.calculator') }}">
+                        <a href="{{ route('rating.ratings') }}">
+                            <i class="bx bx-calendar icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">რეიტინგი</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('discount.index') }}">
                             <i class="bx bx-file icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">აქცია</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.calculator') }}">
+                            <i class="bx bx-calculator icon nav-icon"></i>
                             <span class="menu-item" data-key="t-horizontal">კალკულატორი
                             </span>
                         </a>
@@ -158,8 +218,22 @@
                     @else
 
                     <li>
-                        <a href="{{ route('admin.calculator') }}">
+                        <a href="{{ route('rating.ratings') }}">
+                            <i class="bx bx-calendar icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">რეიტინგი</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('discount.index') }}">
                             <i class="bx bx-file icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">აქცია</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.calculator') }}">
+                            <i class="bx bx-calculator icon nav-icon"></i>
                             <span class="menu-item" data-key="t-horizontal">კალკულატორი
                             </span>
                         </a>
@@ -167,19 +241,18 @@
 
                     <li>
                         <a href="{{ route('purchase.index') }}">
-                            <i class="bx bx-file icon nav-icon"></i>
-                            <span class="menu-item" data-key="t-horizontal">დილერის მანქანები
+                            <i class="bx bx-edit icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">ჩემი შეკვეთები
                             </span>
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('purchase.create') }}">
-                            <i class="bx bx-file icon nav-icon"></i>
-                            <span class="menu-item" data-key="t-horizontal">დილერის შესყიდვების ფორმა</span>
+                            <i class="bx bx-book-open icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-horizontal">ახალი შეკვეთა</span>
                         </a>
                     </li>
-
                     @endif
 
 

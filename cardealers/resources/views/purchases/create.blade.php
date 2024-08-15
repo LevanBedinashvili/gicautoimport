@@ -49,11 +49,16 @@
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">აუქციონი</label>
-                                        <input type="text" class="form-control" name="auction_name" placeholder="აუქციონის სახელი">
+                                        <select class="form-control" name="auction_name">
+                                            <option value="" disabled selected>აირჩიეთ აუქციონი</option>
+                                            <option value="Copart">Copart</option>
+                                            <option value="IAAI">IAAI</option>
+                                            <option value="Canada">Canada</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label class="form-label">სტოკის ნომერი</label>
-                                        <input type="text" class="form-control" name="stock_number" placeholder="სტოკის ნომერი">
+                                        <label class="form-label">ლოტი</label>
+                                        <input type="text" class="form-control" name="stock_number" placeholder="ლოტი">
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">შესყიდვის თარიღი</label>
@@ -69,7 +74,11 @@
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">სრული ღირებულება</label>
-                                        <input type="text" class="form-control" name="full_price" placeholder="სრული ღირებულება">
+                                        <input type="text" class="form-control" name="full_price" placeholder="დაემატება შენახვის შემდეგ" readonly>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label">პირველადი შენატანი</label>
+                                        <input type="text" class="form-control" name="pirveladi_shenatani" placeholder="შეიყვანეთ პირველადი შენატანი" >
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">კლიენტის სახელი და გვარი</label>

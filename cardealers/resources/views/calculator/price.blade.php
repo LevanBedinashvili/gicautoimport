@@ -27,7 +27,7 @@
                                     </div>
 
                                     <div id="displayPrice" style="margin-top: 10px; color: red; display: none;">
-                                        მანქანის ჩამოყვანის საფასური: <span id="selectedPrice"></span>
+                                        price: <span id="selectedPrice"></span>
                                     </div>
                                     <br>
 

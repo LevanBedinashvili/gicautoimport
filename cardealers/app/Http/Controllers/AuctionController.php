@@ -104,7 +104,7 @@ class AuctionController extends Controller
 
     public function getStates($auctionId)
     {
-        $states = State::where('auction_id', $auctionId)->get();
+        $states = State::where('auction_id', $auctionId)->orderBy("name", "asc")->get();
         return response()->json($states);
     }
 }

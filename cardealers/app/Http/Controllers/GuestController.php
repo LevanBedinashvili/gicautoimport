@@ -59,6 +59,26 @@ class GuestController extends Controller
                             ->whereRaw('RIGHT(vin_code, 6) = ?', [$vincode])
                             ->with("galleries")->first();
 
+        if(!$result)
+        {
+            abort(404);
+        }
+
+        return view("guest.search_result", compact("result"));
+    }
+
+
+    public function vehicle($id)
+    {
+
+        $result = Purchase::where('id', $id)
+                            ->with("galleries")->first();
+
+        if(!$result)
+        {
+            abort(404);
+        }
+
         return view("guest.search_result", compact("result"));
     }
 

@@ -18,7 +18,6 @@
                             <table class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>ფოტო</th>
                                         <th>სურათის წაშლა</th>
                                     </tr>
@@ -26,7 +25,6 @@
                                 <tbody>
                                 @forelse ($galleriesbuy as $gallery)
                                     <tr>
-                                        <td>{{ $gallery->id }}</td>
                                         <td><a target="_blank" href="{{ asset('cardealers/storage/app/public/'. $gallery->image_path) }}"><img src="{{ asset('cardealers/storage/app/public/'. $gallery->image_path) }}" width="100" alt="Image"></a></td>
                                         <td>
                                             <form action="{{ route('adminka.deleteGalleryBuyPhoto', $gallery->id) }}" method="post">
@@ -100,7 +98,6 @@
                             <table class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>ფოტო</th>
                                         <th>სურათის წაშლა</th>
                                     </tr>
@@ -108,7 +105,6 @@
                                 <tbody>
                                 @forelse ($galleries as $gallery)
                                     <tr>
-                                        <td>{{ $gallery->id }}</td>
                                         <td><a target="_blank" href="{{ asset('cardealers/storage/app/public/'. $gallery->image_path) }}"><img src="{{ asset('cardealers/storage/app/public/'. $gallery->image_path) }}" width="100" alt="Image"></a></td>
                                         <td>
                                             <form action="{{ route('adminka.destroyGalleryPhotos', $gallery->id) }}" method="post">
@@ -183,7 +179,6 @@
                             <table class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>ფოტო</th>
                                         <th>სურათის წაშლა</th>
                                     </tr>
@@ -191,7 +186,6 @@
                                 <tbody>
                                 @forelse ($galleriesport as $gallery)
                                     <tr>
-                                        <td>{{ $gallery->id }}</td>
                                         <td><a target="_blank" href="{{ asset('cardealers/storage/app/public/'. $gallery->image_path) }}"><img src="{{ asset('cardealers/storage/app/public/'. $gallery->image_path) }}" width="100" alt="Image"></a></td>
                                         <td>
                                             <form action="{{ route('adminka.destroyGalleryPortPhotos', $gallery->id) }}" method="post">

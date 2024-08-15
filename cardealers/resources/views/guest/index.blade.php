@@ -49,7 +49,7 @@
                                 <a href="{{ route('info_two') }}" class="hero-title"
                                     data-animation="fadeInRight" data-delay=".50s"
                                     style="font-family: 'BPG Arial Caps', sans-serif;">
-                                    ოპტიმალური გადაწყვეტილება დილერებისთვის, ჩვენთან თანამშრომლობა კომფირტულია.
+                                    ოპტიმალური გადაწყვეტილება დილერებისთვის, ჩვენთან თანამშრომლობა კომფორტულია.
                                 </a>
                                 <a href="{{ route('info_two') }}" data-animation="fadeInLeft"
                                     data-delay=".75s" style="color: white;">

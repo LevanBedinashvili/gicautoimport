@@ -10,7 +10,7 @@
 
     <title>GIC AUTOIMPORT</title>
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('guest/carlogo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('guest/unnamed.jpg') }}">
 
     <link rel="stylesheet" href="{{ asset('guest/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('guest/css/all-fontawesome.min.css') }}">
@@ -71,6 +71,9 @@
             font-weight: 800;
             margin: 20px 0;
             text-transform: capitalize;
+        }
+        .table-striped>tbody>tr:nth-of-type(odd)>*{
+            text-wrap: nowrap;
         }
     </style>
     <header class="header">

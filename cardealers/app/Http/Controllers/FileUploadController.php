@@ -35,6 +35,24 @@ class FileUploadController extends Controller
             ->with('file', $fileName);
     }
 
+    public function uploadFileSecond(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png,bmp,gif,svg,pdf|max:2048',
+        ]);
+
+        $fileName = time() . '.' . $request->file->extension();
+        $filePath = $request->file('file')->storeAs('uploadsSecond', $fileName, 'public');
+
+        $purchase = Purchase::where('id', $request->id)->firstOrFail();
+        $purchase->file_second_name = $fileName;
+        $purchase->file_second_path = $filePath;
+        $purchase->save();
+
+        return back()
+            ->with('success', 'You have successfully uploaded the file.')
+            ->with('file', $fileName);
+    }
 
     public function displayFiles()
     {
